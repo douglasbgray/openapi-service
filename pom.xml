@@ -8,6 +8,36 @@
     <artifactId>openapi-service</artifactId>
     <version>1.0-SNAPSHOT</version>
 
+    <properties>
+        <jackson.version>2.9.0</jackson.version>
+    </properties>
+
+    <dependencies>
+        <!-- Swagger dependencies -->
+        <dependency>
+            <groupId>io.swagger</groupId>
+            <artifactId>swagger-annotations</artifactId>
+            <version>1.5.16</version>
+        </dependency>
+
+        <!-- Jackson -->
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-annotations</artifactId>
+            <version>${jackson.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-core</artifactId>
+            <version>${jackson.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>${jackson.version}</version>
+        </dependency>
+    </dependencies>
+
     <build>
         <plugins>
             <!-- Swagger -->
@@ -22,9 +52,11 @@
                             <goal>generate</goal>
                         </goals>
                         <configuration>
+                            <language>java</language>
+                            <library>jersey2</library>
                             <inputSpec>${project.basedir}/src/main/resources/api.json</inputSpec>
                             <language>java</language>
-                            <generateApis>true</generateApis>
+                            <generateApis>false</generateApis>
                             <generateApiTests>false</generateApiTests>
                             <generateApiDocumentation>false</generateApiDocumentation>
                             <generateModels>true</generateModels>
@@ -41,6 +73,11 @@
                         <groupId>com.douglasbgray</groupId>
                         <artifactId>openapi-fragments</artifactId>
                         <version>1.0-SNAPSHOT</version>
+                    </dependency>
+                    <dependency>
+                        <groupId>io.swagger</groupId>
+                        <artifactId>swagger-parser</artifactId>
+                        <version>1.0.35-SNAPSHOT</version>
                     </dependency>
                 </dependencies>
 
