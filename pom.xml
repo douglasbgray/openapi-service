@@ -5,11 +5,16 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>comn.doublasbgray</groupId>
-    <artifactId>openapi-service</artifactId>
+    <artifactId>openapi-service-openapi3</artifactId>
     <version>1.0-SNAPSHOT</version>
 
     <properties>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
         <jackson.version>2.9.0</jackson.version>
+        <swagger.annotations.version>1.5.20</swagger.annotations.version>
+        <swagger.codegen.version>3.0.0-rc1</swagger.codegen.version>
+        <swagger.parser.version>2.0.2</swagger.parser.version>
     </properties>
 
     <dependencies>
@@ -17,7 +22,7 @@
         <dependency>
             <groupId>io.swagger</groupId>
             <artifactId>swagger-annotations</artifactId>
-            <version>1.5.16</version>
+            <version>${swagger.annotations.version}</version>
         </dependency>
 
         <!-- Jackson -->
@@ -44,7 +49,7 @@
             <plugin>
                 <groupId>io.swagger</groupId>
                 <artifactId>swagger-codegen-maven-plugin</artifactId>
-                <version>2.3.1</version>
+                <version>${swagger.codegen.version}</version>
 
                 <executions>
                     <execution>
@@ -54,7 +59,7 @@
                         <configuration>
                             <language>java</language>
                             <library>jersey2</library>
-                            <inputSpec>${project.basedir}/src/main/resources/api.json</inputSpec>
+                            <inputSpec>${project.basedir}/src/main/resources/api.yaml</inputSpec>
                             <language>java</language>
                             <generateApis>false</generateApis>
                             <generateApiTests>false</generateApiTests>
@@ -71,13 +76,13 @@
                 <dependencies>
                     <dependency>
                         <groupId>com.douglasbgray</groupId>
-                        <artifactId>openapi-fragments</artifactId>
+                        <artifactId>openapi-fragments-openapi3</artifactId>
                         <version>1.0-SNAPSHOT</version>
                     </dependency>
                     <dependency>
-                        <groupId>io.swagger</groupId>
+                        <groupId>io.swagger.parser.v3</groupId>
                         <artifactId>swagger-parser</artifactId>
-                        <version>1.0.35-SNAPSHOT</version>
+                        <version>${swagger.parser.version}</version>
                     </dependency>
                 </dependencies>
 

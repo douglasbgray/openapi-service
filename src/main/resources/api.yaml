@@ -1,0 +1,26 @@
+---
+openapi: 3.0.0
+info:
+  description: >-
+    Test case showing how a relative URL cannot be read via class path when it is to be resolved in a JAR.
+  version: 1.0.0
+  title: sample
+paths:
+  /persons:
+    get:
+      summary: Get persons
+      operationId: getPersons
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/PersonsResponse"
+components:
+  schemas:
+    PersonsResponse:
+      type: "object"
+      properties:
+        persons:
+          $ref: "/persons.yaml#/components/schemas/Persons"
